@@ -51,6 +51,13 @@ function setup() {
   }else if(keyCode === RIGHT_ARROW) {
     human.pos.x = human.pos.x - 10;
   }
+
+  if(human.pos.x === 200 && human.pos.y === 200){
+    text("Yay! You are taking care of your plant", 200, 30);
+  }else if(animal.pos.x === 200 && animal.pos.y === 200) {
+    text("Oh no! You aren't taking care of your plant" , 200, 30);
+    text("Alert! Alert!", 200, 50);
+  }
   
 }
 
@@ -63,6 +70,8 @@ function draw() {
 
   animal.display();
   weather.display();
+
+  text("Score : "+score, 50, 20);
   
   drawSprites();
 }
