@@ -2,11 +2,12 @@ const Engine = Matter.Engine;
 const World= Matter.World;
 const Bodies = Matter.Bodies;
 const Constraint = Matter.Constraint;
+const Body = Matter.Body;
 
 var engine, world;
 var plant, human;
 var animal, weather;
-var score;
+var score = 0;
 
 function setup() {
   createCanvas(600,600);
@@ -34,27 +35,27 @@ function setup() {
   -The weather will change frequently as the weather is changing dracticlly nowadays
   */
 
-  if(human.pos.x===325 || human.pos.x===275) {
+  if(human.body.position.x === 325 || human.body.position.x===275) {
     score = score + 10;
-  }else if(human.pos.y===375 || human.pos.y===425) {
+  }else if(human.body.position.y===375 || human.body.position.y===425) {
     score = score + 10;
   }
 
-  if(animal.pos.x===325 || animal.pos.x===275) {
+  if(animal.body.position.x===325 || animal.body.position.x===275) {
     score = score + 10;
-  }else if(animal.pos.y===375 || animal.pos.y===425) {
+  }else if(animal.body.position.y===375 || animal.body.position.y===425) {
     score = score + 10;
   }
 
   if(keyCode === LEFT_ARROW) {
-    human.pos.x = human.pos.x + 10;
+    human.body.position.x = human.body.position.x + 10;
   }else if(keyCode === RIGHT_ARROW) {
-    human.pos.x = human.pos.x - 10;
+    human.body.position.x = human.body.position.x - 10;
   }
 
-  if(human.pos.x === 200 && human.pos.y === 200){
+  if(human.body.position.x === 200 && human.body.position.y === 200){
     text("Yay! You are taking care of your plant", 200, 30);
-  }else if(animal.pos.x === 200 && animal.pos.y === 200) {
+  }else if(animal.body.position.x === 200 && animal.body.position.y === 200) {
     text("Oh no! You aren't taking care of your plant" , 200, 30);
     text("Alert! Alert!", 200, 50);
   }
@@ -71,7 +72,7 @@ function draw() {
   animal.display();
   weather.display();
 
-  text("Score : "+score, 50, 20);
+  text("Score : "+score, 50, 50);
   
   drawSprites();
 }
