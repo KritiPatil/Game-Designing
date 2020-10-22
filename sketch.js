@@ -34,9 +34,16 @@ function setup() {
   /*
   -The weather will change frequently as the weather is changing dracticlly nowadays
   */
+  
+}
+
+function draw() {
+  background("black");
+  Engine.update(engine);
 
   if(human.body.position.x === 325 || human.body.position.x===275) {
     score = score + 10;
+    console.log("it works");
   }else if(human.body.position.y===375 || human.body.position.y===425) {
     score = score + 10;
   }
@@ -48,10 +55,11 @@ function setup() {
   }
 
   if(keyCode === LEFT_ARROW) {
-    human.body.position.x = human.body.position.x + 10;
-  }else if(keyCode === RIGHT_ARROW) {
     human.body.position.x = human.body.position.x - 10;
+  }else if(keyCode === RIGHT_ARROW) {
+    human.body.position.x = human.body.position.x + 10;
   }
+  //press the up or down arrow key to stop the human from moving
 
   if(human.body.position.x === 200 && human.body.position.y === 200){
     text("Yay! You are taking care of your plant", 200, 30);
@@ -59,12 +67,6 @@ function setup() {
     text("Oh no! You aren't taking care of your plant" , 200, 30);
     text("Alert! Alert!", 200, 50);
   }
-  
-}
-
-function draw() {
-  background("black");
-  Engine.update(engine);
   
   plant.display();
   human.display();
