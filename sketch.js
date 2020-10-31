@@ -15,7 +15,6 @@ function setup() {
   world = engine.world;
 
   plant = new Players(200, 200, 50, 50);
-  plant.shapeColor = "pink";
   /*
   - The plant grows a little bit every day
   - it could start as a tiny plant and then the next day you could have flowers in your plant
@@ -55,17 +54,23 @@ function draw() {
   }
 
   if(keyCode === LEFT_ARROW) {
-    human.body.position.x = human.body.position.x - 10;
+    human.body.position.x = human.body.position.x - 5;
   }else if(keyCode === RIGHT_ARROW) {
-    human.body.position.x = human.body.position.x + 10;
+    human.body.position.x = human.body.position.x + 5;
   }
+  
   //press the up or down arrow key to stop the human from moving
+
+  if(keyWentDown === "a"){
+    animal.body.position.x = 200;
+    animal.body.position.y = 200;
+    console.log("hello");
+  }
 
   if(human.body.position.x === 200 && human.body.position.y === 200){
     text("Yay! You are taking care of your plant", 200, 30);
   }else if(animal.body.position.x === 200 && animal.body.position.y === 200) {
     text("Oh no! You aren't taking care of your plant" , 200, 30);
-    text("Alert! Alert!", 200, 50);
   }
   
   plant.display();
